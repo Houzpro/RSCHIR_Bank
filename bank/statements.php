@@ -75,19 +75,19 @@ if(!isset($_SESSION['userId'])){ header('location:login.php');}
          {
             if ($row['action'] == 'withdraw') 
             {
-              echo "<div class='list-group-item alert alert-secondary'>You withdraw Rs.$row[debit] from your account at $row[date]</div>";
+              echo "<div class='list-group-item alert alert-secondary'>You withdraw $$row[debit] from your account at $row[date]</div>";
             }
             if ($row['action'] == 'deposit') 
             {
-              echo "<div class='list-group-item alert alert-success'>You deposit Rs.$row[credit] in your account at $row[date]</div>";
+              echo "<div class='list-group-item alert alert-success'>You deposit $$row[credit] in your account at $row[date]</div>";
             }
             if ($row['action'] == 'deduction') 
             {
-              echo "<div class='list-group-item alert alert-danger'>Deduction have been made for  Rs.$row[debit] from your account at $row[date] in case of $row[other]</div>";
+              echo "<div class='list-group-item alert alert-danger'>Deduction have been made for  $$row[debit] from your account at $row[date] in case of $row[other]</div>";
             }
             if ($row['action'] == 'transfer') 
             {
-              echo "<div class='list-group-item alert alert-warning'>Transfer have been made for  Rs.$row[debit] from your account at $row[date] in  account no.$row[other]</div>";
+              echo "<div class='list-group-item alert alert-warning'>Transfer have been made for  $$row[debit] from your account at $row[date] in  account no.$row[other]</div>";
             }
 
          }

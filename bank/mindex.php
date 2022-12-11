@@ -77,7 +77,7 @@ if(!isset($_SESSION['managerId'])){ header('location:login.php');}
         <td><?php echo $row['name'] ?></td>
         <td><?php echo $row['accountNo'] ?></td>
         <td><?php echo $row['branchName'] ?></td>
-        <td>Rs.<?php echo $row['balance'] ?></td>
+        <td>$<?php echo $row['balance'] ?></td>
         <td><?php echo $row['accountType'] ?></td>
         <td><?php echo $row['number'] ?></td>
         <td>

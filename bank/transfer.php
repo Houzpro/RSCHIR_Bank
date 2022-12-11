@@ -140,7 +140,7 @@ if(!isset($_SESSION['userId'])){ header('location:login.php');}
          {
             if ($row['action'] == 'transfer') 
             {
-              echo "<div class='list-group-item list-group-item-action bg-gradient-info'>Transfer have been made for  Rs.$row[debit] from your account at $row[date] in  account no.$row[other]</div>";
+              echo "<div class='list-group-item list-group-item-action bg-gradient-info'>Transfer have been made for  $$row[debit] from your account at $row[date] in  account no.$row[other]</div>";
             }
 
          }

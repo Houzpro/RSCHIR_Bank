@@ -98,7 +98,7 @@ if(!isset($_SESSION['cashId'])){ header('location:login.php');}
                   </div>
                   <div class='col'>
                     Bank Balance
-                    <input type='text' class='form-control my-1'  value='Rs.$row2[balance]' readonly required>
+                    <input type='text' class='form-control my-1'  value='$$row2[balance]' readonly required>
                     <input type='number' class='form-control my-1' name='checkno' placeholder='Write Check Number' required>
                     <input type='number' class='form-control my-1' name='amount' placeholder='Write Amount' max='$row2[balance]' required>
                    <button type='submit' name='withdrawOther' class='btn btn-success btn-bloc btn-sm my-1'> Withdraw</button></form>
@@ -116,7 +116,7 @@ if(!isset($_SESSION['cashId'])){ header('location:login.php');}
                     <input type='text' class='form-control' value='$row2[name]' readonly required>
                     Account Holder Bank Name.
                     <input type='text' class='form-control' value='".bankname."' readonly required>Bank Balance
-                    <input type='text' class='form-control my-1'  value='Rs.$row2[balance]' readonly required>
+                    <input type='text' class='form-control my-1'  value='$$row2[balance]' readonly required>
                      
                   
                   </div>
