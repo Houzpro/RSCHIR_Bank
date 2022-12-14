@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 05, 2018 at 06:24 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Хост: 127.0.0.1
+-- Время создания: Дек 14 2022 г., 22:27
+-- Версия сервера: 10.4.27-MariaDB
+-- Версия PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,44 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mybank`
+-- База данных: `mybank`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `branch`
+-- Структура таблицы `branch`
 --
 
 CREATE TABLE `branch` (
   `branchId` int(11) NOT NULL,
   `branchNo` varchar(111) NOT NULL,
   `branchName` varchar(111) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `branch`
+-- Дамп данных таблицы `branch`
 --
 
 INSERT INTO `branch` (`branchId`, `branchNo`, `branchName`) VALUES
-(1, '100101', 'Dera Ghazi Khan'),
-(2, '100102', 'Multan');
+(1, '100101', 'Msk'),
+(2, '100102', 'msk');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Структура таблицы `feedback`
 --
 
 CREATE TABLE `feedback` (
   `feedbackId` int(11) NOT NULL,
   `message` text NOT NULL,
   `userId` double NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `feedback`
+-- Дамп данных таблицы `feedback`
 --
 
 INSERT INTO `feedback` (`feedbackId`, `message`, `userId`, `date`) VALUES
@@ -65,7 +66,7 @@ INSERT INTO `feedback` (`feedbackId`, `message`, `userId`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Структура таблицы `login`
 --
 
 CREATE TABLE `login` (
@@ -73,11 +74,11 @@ CREATE TABLE `login` (
   `email` varchar(111) NOT NULL,
   `password` varchar(111) NOT NULL,
   `type` varchar(111) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `login`
+-- Дамп данных таблицы `login`
 --
 
 INSERT INTO `login` (`id`, `email`, `password`, `type`, `date`) VALUES
@@ -90,28 +91,29 @@ INSERT INTO `login` (`id`, `email`, `password`, `type`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notice`
+-- Структура таблицы `notice`
 --
 
 CREATE TABLE `notice` (
   `id` int(11) NOT NULL,
   `userId` varchar(111) NOT NULL,
   `notice` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `notice`
+-- Дамп данных таблицы `notice`
 --
 
 INSERT INTO `notice` (`id`, `userId`, `notice`, `date`) VALUES
 (1, '1', 'Dear Customer! <br> OUr privacy policy is changed for account information get new prospectus from your nearest branch', '2022-12-14 13:11:46'),
-(6, '2', 'Dear Ali,<br>\r\nOur privacy policy has been changed please visit nearest <kbd> MCB </kbd> branch for new prospectus.', '2022-12-16 06:29:23');
+(6, '2', 'Dear Splessh,<br>\nOur privacy policy has been changed please visit nearest <kbd> MCB </kbd> branch for new prospectus.', '2022-12-16 06:29:23'),
+(7, '1', 'dfsfsfsdf', '2022-12-11 20:23:37');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `otheraccounts`
+-- Структура таблицы `otheraccounts`
 --
 
 CREATE TABLE `otheraccounts` (
@@ -120,11 +122,11 @@ CREATE TABLE `otheraccounts` (
   `bankName` varchar(111) NOT NULL,
   `holderName` varchar(111) NOT NULL,
   `balance` varchar(111) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `otheraccounts`
+-- Дамп данных таблицы `otheraccounts`
 --
 
 INSERT INTO `otheraccounts` (`id`, `accountNo`, `bankName`, `holderName`, `balance`, `date`) VALUES
@@ -135,7 +137,7 @@ INSERT INTO `otheraccounts` (`id`, `accountNo`, `bankName`, `holderName`, `balan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
+-- Структура таблицы `transaction`
 --
 
 CREATE TABLE `transaction` (
@@ -147,11 +149,11 @@ CREATE TABLE `transaction` (
   `beneId` varchar(111) NOT NULL,
   `other` varchar(111) NOT NULL,
   `userId` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `transaction`
+-- Дамп данных таблицы `transaction`
 --
 
 INSERT INTO `transaction` (`transactionId`, `action`, `credit`, `debit`, `balance`, `beneId`, `other`, `userId`, `date`) VALUES
@@ -173,7 +175,7 @@ INSERT INTO `transaction` (`transactionId`, `action`, `credit`, `debit`, `balanc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `useraccounts`
+-- Структура таблицы `useraccounts`
 --
 
 CREATE TABLE `useraccounts` (
@@ -190,104 +192,112 @@ CREATE TABLE `useraccounts` (
   `accountNo` varchar(111) NOT NULL,
   `branch` varchar(111) NOT NULL,
   `accountType` varchar(111) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `useraccounts`
+-- Дамп данных таблицы `useraccounts`
 --
 
 INSERT INTO `useraccounts` (`id`, `email`, `password`, `name`, `balance`, `cnic`, `number`, `city`, `address`, `source`, `accountNo`, `branch`, `accountType`, `date`) VALUES
-(1, 'some@gmail.com', 'some', 'Fayyaz Khan', '9800', '3210375555426', '03356910260', 'Islamabad', 'Some where in isb', 'Programmer', '1005469', '1', 'Current', '2022-12-14 05:50:06'),
-(2, 'some2@gmail.com', 'some2', 'Ali khan', '16000', '3210375555343', '03356910260', 'Islamabad', 'Some where in isb', 'Programmer', '10054777', '1', 'Saving', '2022-12-14 04:50:06'),
-(6, 'realx4rd@gmail.com', 'afsdfasd', 'Fayyaz Khan', '234234', '3240338834902', '03356910260', 'Taunsa', 'Dera Ghazi Khan', 'Govt. job', '1513410739', '1', 'saving', '2022-12-16 07:52:40'),
-(7, 'realx4rd@gmail.com', 'safsadf', 'Fayyaz Khan', '12121', '3240338834902', '03356910260', 'Taunsa', 'Dera Ghazi Khan', 'Govt. job', '1513410837', '1', 'current', '2022-12-16 07:54:18');
+(1, 'some@gmail.com', 'some', 'Splessh', '9800', '3210375555426', '03356910260', 'msk', 'Some where in msk', 'Programmer', '1005469', '1', 'Current', '2022-12-14 05:50:06'),
+(2, 'some2@gmail.com', 'some2', 'Kusakame', '16000', '3210375555343', '03356910260', 'msk', 'Some where in msk', 'Programmer', '10054777', '1', 'Saving', '2022-12-14 04:50:06'),
+(6, 'realx4rd@gmail.com', 'afsdfasd', 'Richard', '234234', '3240338834902', '03356910260', 'msk', 'Some where in msk', 'Govt. job', '1513410739', '1', 'saving', '2022-12-16 07:52:40'),
+(7, 'realx4rd@gmail.com', 'safsadf', 'Ben', '12121', '3240338834902', '03356910260', 'msk', 'Some where in msk', 'Govt. job', '1513410837', '1', 'current', '2022-12-16 07:54:18');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `branch`
+-- Индексы таблицы `branch`
 --
 ALTER TABLE `branch`
   ADD PRIMARY KEY (`branchId`);
 
 --
--- Indexes for table `feedback`
+-- Индексы таблицы `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedbackId`);
 
 --
--- Indexes for table `login`
+-- Индексы таблицы `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `notice`
+-- Индексы таблицы `notice`
 --
 ALTER TABLE `notice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `otheraccounts`
+-- Индексы таблицы `otheraccounts`
 --
 ALTER TABLE `otheraccounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `transaction`
+-- Индексы таблицы `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`transactionId`);
 
 --
--- Indexes for table `useraccounts`
+-- Индексы таблицы `useraccounts`
 --
 ALTER TABLE `useraccounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `branch`
+-- AUTO_INCREMENT для таблицы `branch`
 --
 ALTER TABLE `branch`
   MODIFY `branchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedbackId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `feedbackId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT для таблицы `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `notice`
+-- AUTO_INCREMENT для таблицы `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `otheraccounts`
+-- AUTO_INCREMENT для таблицы `otheraccounts`
 --
 ALTER TABLE `otheraccounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `transaction`
+-- AUTO_INCREMENT для таблицы `transaction`
 --
 ALTER TABLE `transaction`
   MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
--- AUTO_INCREMENT for table `useraccounts`
+-- AUTO_INCREMENT для таблицы `useraccounts`
 --
 ALTER TABLE `useraccounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
